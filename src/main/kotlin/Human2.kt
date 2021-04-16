@@ -3,11 +3,28 @@
 fun main() {
     val human1 = Human2(1,"수한", "남자", 29, "대전")
     val human2 = Human2(2,"대근", "남자", 29, "대전")
-    val human3 = Human2(3,"대건", "남자", 27, "대전")
 
+    // 타입 추론
+    val human3 : Human2 = Human2(3,"대건", "남자", 27, "대전")
+
+    // 출력
     print(human1)
     print(human2)
     print(human3)
+
+
+
+    // 타입 정의
+    var a : Int;
+    a = 40;
+
+
+
+    //nullable
+    val person : Human2? // ?를 통해 null 허용
+    person = Human2(1,"수한","남자", 29, "대전")
+
+    println(person.introduceMsg())
 
 }
 
