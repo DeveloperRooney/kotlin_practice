@@ -22,7 +22,6 @@ fun main() {
         println("${cnt}번째 입력한 숫자 : ${number}")
     }
 
-
     println("=== 프로그램 종료 ====")
 }
 
