@@ -24,9 +24,9 @@ fun main() {
     println("두번째 사람은 ${human2.name} / ${human2.gender} / ${human2.age} / ${human2.loc}")
     println("세번째 사람은 ${human3.name} / ${human3.gender} / ${human3.age} / ${human3.loc}")
 
-    println("==============================")
+    println("============ toString() 오버라이딩 ==================")
 
-    println(human3.introduceMsg())
+    println(human2.introduceMsg())
 }
 
 class Human {
