@@ -3,7 +3,7 @@ fun main() {
     println("=== 프로그램 시작 ===")
 
     // MutableList
-    val muList : MutableList<Int> = mutableListOf()
+    val muList : MutableList<Int> = mutableListOf<Int>()
 
 
     while (true) {
