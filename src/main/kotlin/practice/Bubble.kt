@@ -24,7 +24,7 @@ fun main() {
     }
 
     // 출력
-    for (x in arr.indices-1) {
+    for (x in arr.indices) {
         println(arr[x])
     }
 }

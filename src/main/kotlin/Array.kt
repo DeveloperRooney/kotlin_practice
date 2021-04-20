@@ -8,7 +8,6 @@ fun main() {
         print("숫자 입력 : ")
         var num = readLine()!!.trim().toInt()
         arr[x] = num
-        println(arr[x])
 
     }
 
