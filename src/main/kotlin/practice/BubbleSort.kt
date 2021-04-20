@@ -8,49 +8,76 @@ fun main() {
     val numbers = readLine()!!.split(" ").map{it.toInt()}.toMutableList()
 
 
-    // 오름차순
-    var temp = 0
-    for (x in numbers.indices) {
-        for (y in 1 until numbers.size -x) {
-            if (numbers[y] < numbers[y-1] ) {
-                temp = numbers[y]
-                numbers[y] = numbers[y-1]
-                numbers[y-1] = temp
 
-            }
-        }
-    }
+    println("오름차순 정렬 결과 : ")
+    bubbleSort(numbers)
 
-    print("오름차순 정렬 결과 : ")
-    for (x in numbers.indices) {
-        print("${numbers[x]} ")
-    }
-    println()
+    printNumbers(numbers)
+
+    println("내림차순 정렬 결과 : ")
+    printNumbersReversed(numbers)
 
 
-    // 내림차순
-    temp = 0
-    for (x in numbers.indices) {
-        for (y in 1 until numbers.size -x) {
-            if (numbers[y] > numbers[y-1] ) {
-                temp = numbers[y]
-                numbers[y] = numbers[y-1]
-                numbers[y-1] = temp
+//    for (number in numbers) {
+//        println(number)
+//    }
 
-            }
-        }
-    }
-
-    print("내림차순 정렬 결과 : ")
-    for (x in numbers.indices) {
-        print("${numbers[x]} ")
-    }
-    println()
-
+//    numbers.withIndex().forEach {
+//        println("${it.index} : ${it.value}")
+//    }
 
 
     println("=== 프로그램 종료 ===")
 
+}
+
+
+// 오름차순
+fun printNumbers(numbers : MutableList<Int>) {
+
+    for (x in 0 until numbers.size) {
+        for (y in 0 until numbers.size - 1) {
+            if (numbers[y] > numbers[y+1]) {
+                var temp = numbers[y+1]
+                numbers[y+1] = numbers[y]
+                numbers[y] = temp
+            }
+        }
+    }
+
+    numbers.withIndex().forEach {
+        print("${it}")
+    }
+    println()
+}
+
+// 내림차순
+fun printNumbersReversed(numbers : MutableList<Int>) {
+    numbers.withIndex().reversed().forEach {
+        print("${it.value}")
+    }
+    println()
+}
+
+fun bubbleSort(numbers : MutableList<Int>) {
+
+    var maxDept = numbers.size - 1
+    // 4
+    // 0, 1, 2, 3
+
+
+    var raiseCnt = 1
+
+    for (depth in maxDept downTo 1) {
+        println("raiseCnt : ${raiseCnt++}")
+        for (x in 0 until depth) {
+            println("numbers[${x}] vs number[${x+1}]")
+
+            if (numbers[x] > numbers[x + 1]) {
+                numbers[x] = numbers[x + 1].also { numbers[x + 1] = numbers[x]}
+            }
+        }
+    }
 }
 
 class Sort {
