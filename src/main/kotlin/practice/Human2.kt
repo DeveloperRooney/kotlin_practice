@@ -1,11 +1,11 @@
-// Human.kt를 변형하여 데이터 클래스 만들고 사용
+package practice// practice.Human.kt를 변형하여 데이터 클래스 만들고 사용
 
 fun main() {
-    val human1 = Human2(1,"수한", "남자", 29, "대전")
-    val human2 = Human2(2,"대근", "남자", 29, "대전")
+    val human1 = Human2(1, "수한", "남자", 29, "대전")
+    val human2 = Human2(2, "대근", "남자", 29, "대전")
 
     // 타입 추론
-    val human3 : Human2 = Human2(3,"대건", "남자", 27, "대전")
+    val human3 : Human2 = Human2(3, "대건", "남자", 27, "대전")
 
     // 출력
     print(human1)
@@ -22,7 +22,7 @@ fun main() {
 
     //nullable
     val person : Human2? // ?를 통해 null 허용
-    person = Human2(1,"수한","남자", 29, "대전")
+    person = Human2(1, "수한", "남자", 29, "대전")
 
     println(person.introduceMsg())
 

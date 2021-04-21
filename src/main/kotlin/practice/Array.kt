@@ -1,3 +1,5 @@
+package practice
+
 fun main() {
 
     var arr = Array<Int?>(5) {null}

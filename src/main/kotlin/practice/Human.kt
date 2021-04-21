@@ -1,3 +1,5 @@
+package practice
+
 fun main() {
     val human1 = Human();
 

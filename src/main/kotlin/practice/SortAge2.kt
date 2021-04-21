@@ -34,23 +34,35 @@ fun main() {
         println(members[x])
     }
 
-    println("나이 오름차순 정렬")
 
+    println("나이 오름차순 정렬\n")
     for (x in 0 until members.size) {
         for (y in 0 until members.size - 1 - x) {
             if (members[y].age > members[y+1].age) {
                 var temp = members[y]
                 members[y] = members[y+1]
                 members[y+1] = temp
-            }else if (members[y].age == members[y].age) {
-                if (members[y].name > members[y+1].name) {
-                    var temp = members[y]
-                    members[y] = members[y+1]
-                    members[y+1] = temp
-                }
             }
         }
     }
+
+    for (x in 0 until members.size) {
+        println(members[x])
+    }
+
+
+
+    println("나이 정렬 후 이름으로 정렬\n")
+    for (x in 0 until members.size) {
+        for (y in 0 until members.size - 1 - x) {
+            if (members[y].age == members[y+1].age && members[y].name > members[y+1].name) {
+                var temp = members[y]
+                members[y] = members[y+1]
+                members[y+1] = temp
+            }
+        }
+    }
+
 
     for (x in 0 until members.size) {
         println(members[x])

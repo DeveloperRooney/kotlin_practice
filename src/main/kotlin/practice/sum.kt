@@ -1,3 +1,5 @@
+package practice
+
 fun main() {
     println("=== 프로그램 시작 ===")
 
