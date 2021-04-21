@@ -36,6 +36,4 @@ fun main() {
 
 }
 
-data class InputNumber(var num1 : Int, var num2 : Int, var num3 : Int){
-
-}
+data class InputNumber(var num1 : Int, var num2 : Int, var num3 : Int)
