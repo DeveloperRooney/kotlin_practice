@@ -58,16 +58,21 @@ fun main() {
             for (x in 0 until boardList.size) {
                 if (boardList[x].idx == num) {
                     boardList.removeAt(x)
+                    cnt--
+                    println("글이 삭제되었습니다.")
                     break
+
                 }else {
                     cnt++
                 }
+
             }
 
-            // 카운터가 글 갯수와 같아지면 해당 글이 없음
             if (cnt == boardList.size) {
                 println("해당 글은 존재하지 않습니다.\n")
+                continue
             }
+
 
         // 게시판 글 리스트
         }else if (cmd.equals("board list")) {
