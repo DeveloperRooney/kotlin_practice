@@ -48,27 +48,24 @@ fun main() {
             break
         
         // 글 삭제
-        }else if (cmd.equals("board delete")) {
-            
+        }else if (cmd.startsWith("board delete")) {
+
             // 삭제할 글 번호 입력
-            print("삭제할 글 번호 : ")
-            var num = readLine()!!.trim().toInt()
+            val num = cmd.trim().split(" ")[2].toInt()
             
             var cnt = 0
             for (x in 0 until boardList.size) {
                 if (boardList[x].idx == num) {
                     boardList.removeAt(x)
-                    cnt--
+                    cnt++
                     println("글이 삭제되었습니다.")
                     break
 
-                }else {
-                    cnt++
                 }
 
             }
 
-            if (cnt == boardList.size) {
+            if (cnt != 1) {
                 println("해당 글은 존재하지 않습니다.\n")
                 continue
             }
@@ -83,7 +80,34 @@ fun main() {
             println()
         
         // 존재하지 않는 명령어일 때
-        }else {
+        }else if (cmd.startsWith("board modify")) {
+            if (cmd.trim().split(" ")[2].toInt() == null) {
+                println("게시글 번호를 입력하지 않았습니다.")
+                continue
+            }
+            var num = cmd.trim().split(" ")[2].toInt()
+
+            var cnt = 0
+            for (x in 0 until boardList.size) {
+                if (boardList[x].idx == num) {
+                    cnt++
+                    print("제목 :")
+                    var subject = readLine()!!
+                    print("내용 :")
+                    var contents = readLine()!!
+
+                    boardList[x].subject = subject
+                    boardList[x].contents = contents
+
+                }
+            }
+
+            if (cnt != 1) {
+                println("존재하지 않는 글입니다.")
+            }
+        }
+
+        else {
             println("'${cmd}'는 존재하지 않는 명령어입니다.")
         }
     }
@@ -92,5 +116,5 @@ fun main() {
 
 }
 
-data class Board (val idx : Int, val subject : String, val contents : String, val regdate : String,
-val editdate : String)
+data class Board (val idx : Int, var subject : String, var contents : String, val regdate : String,
+                  val editdate : String)
