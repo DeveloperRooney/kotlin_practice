@@ -90,13 +90,13 @@ fun main() {
                 }else {
                     val pageNum = command.trim().split(" ")[2].toInt()
 
-                    val startNum = (pageNum * 10) -10
-                    val endNum = pageNum * 10
+                    val startIndex = (pageNum * 10) -10
+                    val endIndex = pageNum * 10
 
                     var list = articles.reversed()
 
                     println("번호 / 작성날짜 / 제목")
-                    for (x in startNum until endNum) {
+                    for (x in startIndex until endIndex) {
                         println("${list[x].id} / ${list[x].regDate} / ${list[x].title}")
                     }
                 }
