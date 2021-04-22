@@ -56,7 +56,7 @@ fun main() {
             
             var cnt = 0
             for (x in 0 until boardList.size) {
-                if (boardList[x].idx == num-1) {
+                if (boardList[x].idx == num) {
                     boardList.removeAt(x)
                     break
                 }else {
