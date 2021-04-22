@@ -84,14 +84,17 @@ fun main() {
             command.startsWith("article list") -> {
                 if (command.trim().split(" ").size < 3) {
                     println("출력한 페이지 번호를 입력해 주세요.")
-                }else if (command.trim().split(" ")[2].toInt() * 10 > articles.size) {
+                }else if (command.trim().split(" ")[2].toInt() * 10 > articles.size + 10) {
                     println("존재하지 않는 페이지입니다.")
                     continue
                 }else {
                     val pageNum = command.trim().split(" ")[2].toInt()
 
                     val startIndex = (pageNum * 10) -10
-                    val endIndex = pageNum * 10
+                    var endIndex = pageNum * 10
+                    if(pageNum * 10 > articles.size) {
+                        endIndex = articles.size
+                    }
 
                     var list = articles.reversed()
 
@@ -100,8 +103,6 @@ fun main() {
                         println("${list[x].id} / ${list[x].regDate} / ${list[x].title}")
                     }
                 }
-
-
 
             }
             else -> {
@@ -143,7 +144,7 @@ fun addArticle(title: String, body: String): Int {
 }
 
 fun makeTestArticles() {
-    for (id in 1..100) {
+    for (id in 1..99) {
         val title = "제목_$id"
         val body = "내용_$id"
 
