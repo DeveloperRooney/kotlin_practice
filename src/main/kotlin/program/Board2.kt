@@ -110,7 +110,7 @@ fun main() {
             // 명령어가 article list로 시작하고 명령어의 단어 갯수가 3개를 넘어가는지 확인한다.
             command.startsWith("article list") && command.trim().split(" ").size > 3 -> {
 
-                // 페이지 부분을 확인하고 해당 페이지가 존재할 수 있는 페이지인지 확인한다.
+                // 페이지 부분을 확인하고 해당 페이지가 존재할 수 있는 페이지인지 확인하는 부분
                 if (command.trim().split(" ")[command.trim().split(" ").size -1].toInt() * 10 > articles.size + 10) {
                     println("존재하지 않는 페이지입니다.")
                     continue
