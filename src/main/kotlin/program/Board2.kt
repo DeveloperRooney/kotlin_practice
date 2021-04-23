@@ -81,11 +81,15 @@ fun main() {
                     println("${article.id} / ${article.regDate} / ${article.title}")
                 }
             }
-            command.startsWith("article list") -> {
-                if (command.trim().split(" ").size < 3) {
-                    println("출력한 페이지 번호를 입력해 주세요.")
-                }else if (command.trim().split(" ")[2].toInt() * 10 > articles.size + 10) {
+            command.startsWith("article list") && command.trim().split(" ").size == 3 -> {
+
+//                if (command.trim().split(" ").size < 3) {
+//                    println("출력한 페이지 번호를 입력해 주세요.")
+//                }else
+                if (command.trim().split(" ")[2].toInt() * 10 >= articles.size + 10) {
                     println("존재하지 않는 페이지입니다.")
+                    println(command.trim().split(" ")[2].toInt() * 10)
+                    println(articles.size + 10)
                     continue
                 }else {
                     val pageNum = command.trim().split(" ")[2].toInt()
@@ -105,6 +109,65 @@ fun main() {
                 }
 
             }
+            command.startsWith("article list") && command.trim().split(" ").size >= 4 -> {
+
+                if (command.trim().split(" ")[command.trim().split(" ").size -1].toInt() * 10 > articles.size + 10) {
+                    println("존재하지 않는 페이지입니다.")
+                    continue
+                }else {
+                    var list = articles.reversed()
+
+                    var searchList = mutableListOf<Article>()
+
+                    var keyWord = ""
+
+                    for (x in 2 until command.trim().split(" ").size -1) {
+                        keyWord += command.trim().split(" ")[x]
+                    }
+
+                    println("\n검색어 ${keyWord}에 따른 검색 결과 중 ${command.trim().split(" ")[command.trim().split(" ").size -1].toInt()}페이지입니다.\n")
+
+
+                    for (x in 0 until articles.size) {
+                        if (list[x].title.contains(keyWord)) {
+                            searchList.add(list[x])
+                        }
+                    }
+
+                    val pageNum = command.trim().split(" ")[command.trim().split(" ").size -1].toInt()
+
+                    val startIndex = (pageNum * 10) - 10
+                    var endIndex = pageNum * 10
+                    if (pageNum * 10 > searchList.size) {
+                        endIndex = searchList.size
+                    }
+
+                    println("번호 / 작성날짜 / 제목")
+                    for (x in startIndex until endIndex) {
+                        println("${searchList[x].id} / ${searchList[x].regDate} / ${searchList[x].title}")
+                    }
+
+                }
+//                else ->
+//                    val pageNum = command.trim().split(" ")[2].toInt()
+//
+//                    val startIndex = (pageNum * 10) -10
+//                    var endIndex = pageNum * 10
+//                    if(pageNum * 10 > articles.size) {
+//                        endIndex = articles.size
+//                    }
+//
+//                    var list = articles.reversed()
+//
+//                    println("번호 / 작성날짜 / 제목")
+//                    for (x in startIndex until endIndex) {
+//                        println("${list[x].id} / ${list[x].regDate} / ${list[x].title}")
+//                    }
+//                }
+
+            }
+
+
             else -> {
                 println("`$command` 은(는) 존재하지 않는 명령어 입니다.")
             }
@@ -144,9 +207,9 @@ fun addArticle(title: String, body: String): Int {
 }
 
 fun makeTestArticles() {
-    for (id in 1..99) {
-        val title = "제목_$id"
-        val body = "내용_$id"
+    for (id in 1..103) {
+        val title = "제목$id"
+        val body = "내용$id"
 
         addArticle(title, body)
     }
