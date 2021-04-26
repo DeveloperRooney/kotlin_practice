@@ -212,7 +212,7 @@ fun addArticle(title: String, body: String): Int {
 }
 
 fun makeTestArticles() {
-    for (id in 1..103) {
+    for (id in 1..1000) {
         val title = "제목$id"
         val body = "내용$id"
 
