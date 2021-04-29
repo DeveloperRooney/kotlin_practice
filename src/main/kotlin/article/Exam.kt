@@ -1,4 +1,4 @@
-package Article
+package article
 
 import java.text.SimpleDateFormat
 
