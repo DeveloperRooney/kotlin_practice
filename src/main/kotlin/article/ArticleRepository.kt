@@ -1,5 +1,8 @@
 package article
 
+import java.io.File
+import java.io.PrintWriter
+
 class ArticleRepository {
     private val articles = mutableListOf<Article>()
     private var lastId = 0
@@ -26,6 +29,42 @@ class ArticleRepository {
         articles.add(Article(id, regDate, updateDate, memberId, title, body))
 
         return id
+    }
+
+    fun addJson(memberId: Int, title: String, body: String): Int {
+
+        val fileTree : FileTreeWalk = File("C:\\Users\\SBS-\\IdeaProjects\\file\\article").walk()
+
+        val regDate = Util.getNowDateStr()
+        val updateDate = Util.getNowDateStr()
+        var cnt = 0
+
+        for (file in fileTree) {
+            if (file.name.contains("json")) {
+                cnt++
+            }
+        }
+
+        println("$cnt")
+        cnt ++
+
+        val path = "C:\\Users\\SBS-\\IdeaProjects\\file\\article\\${cnt}.json"
+        val contents = "{\n" +
+                "  \"id\":${cnt},\n" +
+                "  \"regDate\": \"${regDate}\",\n" +
+                "  \"updateDate\": \"${updateDate}\",\n" +
+                "  \"memberId\": ${memberId},\n" +
+                "  \"boardId\": 1,\n" +
+                "  \"title\": \"${title}\",\n" +
+                "  \"body\": \"${body}\"\n" +
+                "}"
+
+        val file = File(path)
+        val printWriter = PrintWriter(file)
+        printWriter.println(contents)
+        printWriter.close()
+
+        return cnt
     }
 
     fun makeTestArticles() {
